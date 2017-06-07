@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">dagger2-android-sample</string>
+    <string name="label_daily_boxoffice">일일 박스오피스를 알아보자</string>
+    <string name="label_weekly_boxoffice">주간 박스오피스를 알아보자</string>
+</resources>

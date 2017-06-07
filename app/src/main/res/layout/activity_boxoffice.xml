@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".nodagger.BoxOfficeActivity">
+
+    <LinearLayout
+        android:id="@+id/boxoffice_button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:weightSum="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/boxoffice_get_daily_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/label_daily_boxoffice"/>
+
+        <Button
+            android:id="@+id/boxoffice_get_weekly_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/label_weekly_boxoffice"/>
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/boxoffice_button">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/boxoffice_title"
+                android:background="@android:color/darker_gray"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/boxoffice_contnet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
