@@ -1,4 +1,4 @@
-package com.only1.dagger2.sample.nodagger;
+package com.only1.dagger2.sample.simple;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

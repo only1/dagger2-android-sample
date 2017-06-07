@@ -1,4 +1,4 @@
-package com.only1.dagger2.sample.nodagger;
+package com.only1.dagger2.sample.simple;
 
 /**
  * Created by daehwang on 10/05/2017.
@@ -14,6 +14,7 @@ final class BoxOfficeConstract {
     }
 
     interface Presenter {
+        void setView(View view);
         void loadDailyBoxOffice();
         void loadWeeklyBoxOffice();
     }

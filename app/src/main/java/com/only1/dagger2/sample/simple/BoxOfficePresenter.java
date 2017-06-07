@@ -1,12 +1,13 @@
-package com.only1.dagger2.sample.nodagger;
+package com.only1.dagger2.sample.simple;
 
+import android.content.Context;
 import android.util.Log;
+
+import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by daehwang on 10/05/2017.
@@ -15,17 +16,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 class BoxOfficePresenter implements BoxOfficeConstract.Presenter {
     private static final String TAG = BoxOfficePresenter.class.getSimpleName();
 
-    private BoxOfficeConstract.View boxofficeView;
-    private MovieApi movieApi;
+    BoxOfficeConstract.View boxofficeView;
 
-    BoxOfficePresenter(BoxOfficeConstract.View view) {
+    @Inject
+    MovieApi movieApi;
+
+    BoxOfficePresenter(Context context) {
+        ((MyApplication)context).getAppComponent().inject(this);
+    }
+
+    @Override
+    public void setView(BoxOfficeConstract.View view) {
         this.boxofficeView = view;
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://www.kobis.or.kr/kobisopenapi/webservice/rest/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        movieApi = retrofit.create(MovieApi.class);
     }
 
     @Override

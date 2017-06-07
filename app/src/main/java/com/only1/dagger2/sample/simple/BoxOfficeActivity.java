@@ -1,4 +1,4 @@
-package com.only1.dagger2.sample.nodagger;
+package com.only1.dagger2.sample.simple;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,14 +7,18 @@ import android.widget.TextView;
 
 import com.only1.dagger2.sample.R;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+
 public class BoxOfficeActivity extends AppCompatActivity implements BoxOfficeConstract.View {
     private static final String TAG = BoxOfficeActivity.class.getSimpleName();
 
-    private BoxOfficePresenter boxOfficePresenter;
+    @Inject
+    BoxOfficeConstract.Presenter boxOfficePresenter;
 
     @BindView(R.id.boxoffice_title)
     TextView title;
@@ -28,7 +32,9 @@ public class BoxOfficeActivity extends AppCompatActivity implements BoxOfficeCon
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boxoffice);
         ButterKnife.bind(this);
-        boxOfficePresenter = new BoxOfficePresenter(this);
+
+        ((MyApplication)getApplication()).getAppComponent().inject(this);
+        boxOfficePresenter.setView(this);
     }
 
     @OnClick(R.id.boxoffice_get_daily_info)
